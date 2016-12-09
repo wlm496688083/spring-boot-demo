@@ -1,0 +1,14 @@
+{
+  "properties": [
+    {
+      "name": "spring.profiles",
+      "type": "java.lang.String",
+      "description": "Description for spring.profiles."
+    },
+    {
+      "name": "spring.devtools.restart.additional-paths",
+      "type": "java.lang.String",
+      "description": "Description for spring.devtools.restart.additional-paths."
+    }
+  ]
+}
