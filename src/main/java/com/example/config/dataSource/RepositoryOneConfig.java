@@ -1,4 +1,4 @@
-package com.example.config;
+package com.example.config.dataSource;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -11,35 +11,39 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 
 import javax.sql.DataSource;
 
 @Configuration
-@MapperScan(basePackages = "com.example.mapper.two", sqlSessionTemplateRef = "sqlSessionTemplate2")
+@MapperScan(basePackages = "com.example.mapper.one", sqlSessionTemplateRef = "sqlSessionTemplate1")
 @EnableConfigurationProperties(MybatisProperties.class)
-public class RepositoryTwoConfig {
+public class RepositoryOneConfig {
 
     private MybatisProperties properties;
 
     private DruidDataSourceBase dataSourceBase;
 
-    public RepositoryTwoConfig(MybatisProperties properties, DruidDataSourceBase dataSourceBase) {
+    public RepositoryOneConfig(MybatisProperties properties, DruidDataSourceBase dataSourceBase) {
         this.properties = properties;
         this.dataSourceBase = dataSourceBase;
     }
-    @Bean(name = "dataSource2")
-    public DruidDataSource dataSource2() {
-        return dataSourceBase.getDruidDataSource(dataSourceProperties2());
+
+    @Bean(name = "dataSource1")
+    @Primary
+    public DruidDataSource dataSource1() {
+        return dataSourceBase.getDruidDataSource(dataSourceProperties1());
     }
 
-    @Bean(name = "dataSourceProperties2")
-    @ConfigurationProperties(prefix = "datasource.2")
-    public DataSourceProperties dataSourceProperties2() {
+    @Bean(name = "dataSourceProperties1")
+    @ConfigurationProperties(prefix = "datasource.1")
+    public DataSourceProperties dataSourceProperties1() {
         return new DataSourceProperties();
     }
 
-    @Bean(name = "sqlSessionFactory2")
-    public SqlSessionFactory sqlSessionFactory(@Qualifier("dataSource2") DataSource dataSource)
+
+    @Bean(name = "sqlSessionFactory1")
+    public SqlSessionFactory sqlSessionFactory(@Qualifier("dataSource1") DataSource dataSource)
             throws Exception {
         SqlSessionFactoryBean factory = new SqlSessionFactoryBean();
         factory.setDataSource(dataSource);
@@ -48,9 +52,9 @@ public class RepositoryTwoConfig {
         return factory.getObject();
     }
 
-    @Bean(name = "sqlSessionTemplate2")
+    @Bean(name = "sqlSessionTemplate1")
     public SqlSessionTemplate sqlSessionTemplate(
-            @Qualifier("sqlSessionFactory2") SqlSessionFactory sqlSessionFactory) throws Exception {
+            @Qualifier("sqlSessionFactory1") SqlSessionFactory sqlSessionFactory) throws Exception {
         return new SqlSessionTemplate(sqlSessionFactory);
     }
 }

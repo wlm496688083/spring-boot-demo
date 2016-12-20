@@ -1,4 +1,4 @@
-package com.example.config;
+package com.example.config.dataSource;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import org.springframework.stereotype.Component;
