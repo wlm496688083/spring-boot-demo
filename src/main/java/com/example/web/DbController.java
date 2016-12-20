@@ -17,7 +17,7 @@ public class DbController {
 
 
     @GetMapping("/db1")
-    public Order index12() {
+    public Order index1() {
         return dbService.getOrderSingleton1(42746860760L);
     }
 

@@ -1,5 +1,6 @@
 package com.example.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -12,6 +13,7 @@ import java.util.Date;
  */
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class Order implements Serializable {
     @NonNull
     private Long orderId; //订单ID
