@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface OrderOtherMapper {
-    Order getOrderSingleton(Long id);
+    Order getOrderSingleton(Long id1);
 }
