@@ -9,7 +9,7 @@ import javax.servlet.http.HttpSession;
 /**
  * Created by wanglimin1 on 2016/12/7.
  */
-@RestController
+//@RestController
 public class RedisController {
     @GetMapping("/setRedis")
     public ResponseEntity index(HttpSession httpSession) {

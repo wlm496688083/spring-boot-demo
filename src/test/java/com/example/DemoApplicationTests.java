@@ -1,6 +1,5 @@
 package com.example;
 
-import com.example.service.TestService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,13 +12,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest(classes = DemoApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class DemoApplicationTests {
 
-    @Autowired
+  /*  @Autowired
     private TestService testService;
 
     @Test
     public void contextLoads() {
         String body = this.testService.getNameFor();
         assertThat(body).isEqualTo("wlm");
-    }
+    }*/
 
 }

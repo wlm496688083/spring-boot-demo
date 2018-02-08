@@ -1,15 +1,19 @@
 package com.example;
 
+import de.codecentric.boot.admin.config.EnableAdminServer;
 import javafx.scene.Parent;
 import org.springframework.boot.Banner;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.ServletComponentScan;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @SpringBootApplication
 //@EnableRedisHttpSession
 @ServletComponentScan
+@EnableTransactionManagement
+@EnableAdminServer
 public class DemoApplication implements CommandLineRunner {
 
     public static void main(String[] args) {
@@ -28,7 +32,7 @@ public class DemoApplication implements CommandLineRunner {
 
     @Override
     public void run(String... strings) throws Exception {
-
+        //先执行这个
     }
 
 }

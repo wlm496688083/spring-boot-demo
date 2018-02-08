@@ -1,7 +1,10 @@
 package com.example.config.dataSource;
 
+import org.springframework.context.annotation.Configuration;
+
 /**
  */
+@Configuration
 public class DataSourceProperties {
 
     private String url;

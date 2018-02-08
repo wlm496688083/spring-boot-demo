@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:hsf="http://www.taobao.com/hsf"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd   http://www.taobao.com/hsf  http://www.taobao.com/hsf/hsf.xsd">
+    <description>HSS/IMSI相关接口，（针对能力平台）hsf服务提供者配置</description>
+
+
+    <hsf:provider id="imsiRecycleServiceH" interface="com.chinaunicom.imsi.sale.intfc.ImsiRecycleService"
+                  ref="imsiRecycleService" version="${HSS_IMSI_VERSION}" group="${HSS_IMSI_GROUP}" clientTimeout="60000"
+                  enableTXC="true" serializeType="hessian"/>
+    <hsf:provider id="getImsiFromImsiCenterServiceH"
+                  interface="com.chinaunicom.imsi.sale.intfc.GetImsiFromImsiCenterService"
+                  ref="getImsiFromImsiCenterService" version="${HSS_IMSI_VERSION}" group="${HSS_IMSI_GROUP}"
+                  clientTimeout="60000" enableTXC="true" serializeType="hessian"/>
+</beans>

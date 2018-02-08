@@ -1,8 +1,11 @@
 package com.example.web;
 
-import com.example.domain.Order;
+import com.example.domain.ImsiMakeCardPO;
 import com.example.service.DbService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -12,17 +15,25 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class DbController {
 
+    private Logger logger = LoggerFactory.getLogger(DbController.class);
+
     @Autowired
     private DbService dbService;
 
-
-    @GetMapping("/db1")
-    public Order index1() {
-        return dbService.getOrderSingleton1(42746860760L);
+    @GetMapping("/db")
+    public ImsiMakeCardPO index() {
+        logger.info("============i am exec . ===============");
+        return dbService.selectByPrimaryKey(28);
     }
 
-    @GetMapping("/db2")
-    public Order index2() {
-        return dbService.getOrderSingleton2(42746860760L);
+
+    @GetMapping("/db1")
+    @Transactional(value = "txManager1")
+    public int index1() {
+        ImsiMakeCardPO po = new ImsiMakeCardPO();
+        po.setOrderId("900");
+        dbService.addPo(po);
+        //throw new RuntimeException("my");
+        return 1;
     }
 }

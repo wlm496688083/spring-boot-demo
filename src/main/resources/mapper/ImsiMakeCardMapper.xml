@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.one.ImsiMakeCardDAO">
+    <resultMap id="BaseResultMap" type="com.example.domain.ImsiMakeCardPO">
+        <id column="SEQ_ID" jdbcType="BIGINT" property="seqId"/>
+        <result column="ORDER_ID" jdbcType="VARCHAR" property="orderId"/>
+        <result column="FILE_NAME" jdbcType="VARCHAR" property="fileName"/>
+        <result column="START_IMSI" jdbcType="VARCHAR" property="startImsi"/>
+        <result column="END_IMSI" jdbcType="VARCHAR" property="endImsi"/>
+        <result column="OPER_TIME" jdbcType="TIMESTAMP" property="operTime"/>
+        <result column="RES_DESC" jdbcType="VARCHAR" property="resDesc"/>
+        <result column="LOCK_NUM" jdbcType="INTEGER" property="lockNum"/>
+        <result column="SUCCESS_NUM" jdbcType="INTEGER" property="successNum"/>
+        <result column="SUB_IMSI" jdbcType="BIGINT" property="subImsi"/>
+        <result column="STATUS" jdbcType="VARCHAR" property="status"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    SEQ_ID, ORDER_ID, FILE_NAME, START_IMSI, END_IMSI, OPER_TIME, RES_DESC, LOCK_NUM ,SUCCESS_NUM ,SUB_IMSI,STATUS
+  </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from imsi_make_card
+        where SEQ_ID = #{seqId,jdbcType=BIGINT}
+    </select>
+
+    <insert id="insert" parameterType="com.example.domain.ImsiMakeCardPO">
+        insert into imsi_make_card ( ORDER_ID, FILE_NAME,START_IMSI, END_IMSI, OPER_TIME,RES_DESC, LOCK_NUM,SUCCESS_NUM ,SUB_IMSI,STATUS)
+        values ( #{orderId,jdbcType=VARCHAR}, #{fileName,jdbcType=VARCHAR},
+        #{startImsi,jdbcType=VARCHAR}, #{endImsi,jdbcType=VARCHAR}, #{operTime,jdbcType=TIMESTAMP},
+        #{resDesc,jdbcType=VARCHAR}, #{lockNum,jdbcType=INTEGER} , #{successNum,jdbcType=INTEGER},#{subImsi,jdbcType=BIGINT},#{status,jdbcType=VARCHAR})
+    </insert>
+</mapper>

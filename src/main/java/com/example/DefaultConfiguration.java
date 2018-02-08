@@ -6,7 +6,7 @@ import org.springframework.context.annotation.PropertySource;
 
 @Configuration
 public class DefaultConfiguration {
-    @Configuration
+   /* @Configuration
     @Profile("prod")
     @PropertySource(value = {"classpath:important.properties"},
             ignoreResourceNotFound = true)
@@ -19,7 +19,7 @@ public class DefaultConfiguration {
     @PropertySource(value = {"classpath:dev.properties"},
             ignoreResourceNotFound = true)
     static class Development {
-    }
+    }*/
 }
 
 

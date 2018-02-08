@@ -1,8 +1,7 @@
 package com.example.service;
 
-import com.example.domain.Order;
-import com.example.mapper.one.OrderMapper;
-import com.example.mapper.two.OrderOtherMapper;
+import com.example.domain.ImsiMakeCardPO;
+import com.example.mapper.one.ImsiMakeCardDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,16 +12,13 @@ import org.springframework.stereotype.Service;
 public class DbService {
 
     @Autowired
-    private OrderMapper orderMapper;
+    private ImsiMakeCardDAO imsiMakeCardDAO;
 
-    @Autowired
-    private OrderOtherMapper orderOtherMapper;
-
-    public Order getOrderSingleton1(long l) {
-        return orderMapper.getOrderSingleton(l);
+    public ImsiMakeCardPO selectByPrimaryKey(long id) {
+        return imsiMakeCardDAO.selectByPrimaryKey(id);
     }
 
-    public Order getOrderSingleton2(long l) {
-        return orderOtherMapper.getOrderSingleton(l);
+    public int addPo(ImsiMakeCardPO po){
+        return imsiMakeCardDAO.insert(po);
     }
 }

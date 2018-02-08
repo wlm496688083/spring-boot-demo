@@ -14,9 +14,9 @@ import org.springframework.context.annotation.Configuration;
 
 import javax.sql.DataSource;
 
-@Configuration
-@MapperScan(basePackages = "com.example.mapper.two", sqlSessionTemplateRef = "sqlSessionTemplate2")
-@EnableConfigurationProperties(MybatisProperties.class)
+//@Configuration
+//@MapperScan(basePackages = "com.example.mapper.two", sqlSessionTemplateRef = "sqlSessionTemplate2")
+//@EnableConfigurationProperties(MybatisProperties.class)
 public class RepositoryTwoConfig {
 
     private MybatisProperties properties;

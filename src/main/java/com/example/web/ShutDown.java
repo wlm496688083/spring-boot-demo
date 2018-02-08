@@ -1,6 +1,5 @@
 package com.example.web;
 
-import com.example.service.TestService;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ExitCodeGenerator;
@@ -17,9 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class ShutDown implements ApplicationContextAware {
 
     private ApplicationContext applicationContext;
-
-    @Autowired
-    private TestService testService;
 
     @GetMapping("/web")
     public int shutDown() {

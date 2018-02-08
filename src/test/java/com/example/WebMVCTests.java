@@ -32,8 +32,8 @@ public class WebMVCTests {
 
     @Test
     public void testExample() throws Exception {
-        given(this.dbService.getOrderSingleton2(42746860760L))
-                .willReturn(new Order(42746860760L, 888L, 9991L, 1, null, 1, null, null));
+       // given(this.dbService.getOrderSingleton2(42746860760L))
+       //         .willReturn(new Order(42746860760L, 888L, 9991L, 1, null, 1, null, null));
 
         this.mvc.perform(get("/db2").accept(MediaType.TEXT_PLAIN))
                 .andExpect(status().isOk()).andExpect(content().string("Honda Civic"));
